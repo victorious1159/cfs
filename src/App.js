@@ -24,6 +24,7 @@ import React, { Component } from "react";
 import GreetingContainer from "./components/class/GreetingContainer.js";
 import RandomUser from "./components/class/RandomUser.js";
 import Main from "./components/MainComponent.js";
+import { BrowserRouter } from "react-router-dom";
 
 class App extends Component {
   render() {
@@ -35,9 +36,11 @@ class App extends Component {
           </div>
         </Navbar>
         <Menu dishes={this.state.dishes} /> */}
-        <div className="App">
-          <Main />
-        </div>
+        <BrowserRouter>
+          <div className="App">
+            <Main />
+          </div>
+        </BrowserRouter>
       </div>
     );
   }
