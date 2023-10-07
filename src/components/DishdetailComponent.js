@@ -54,20 +54,6 @@ function RenderComments({ comments }) {
   );
 }
 const DishDetail = (props) => {
-  // const dish = this.props.dish;
-  // if (dish == null) {
-  //   return <div></div>;
-  // }
-  // const dishItem = this.RenderDish(dish);
-  // const dishComments = this.RenderComments(dish.comments);
-  // return (
-  //   <div className="container">
-  //     <div className="row">
-  //       {dishItem}
-  //       {dishComments}
-  //     </div>
-  //   </div>
-  // );
   if (props.dish != null) {
     return (
       <div className="container">
@@ -83,6 +69,7 @@ const DishDetail = (props) => {
             <hr />
           </div>
         </div>
+
         <div className="row">
           <div className="col-12 col-md-5 m-1">
             <RenderDish dish={props.dish} />

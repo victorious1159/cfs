@@ -70,10 +70,10 @@ class Main extends Component {
           <Redirect to="/home" />
         </Switch>
 
-        <Menu
+        {/* <Menu
           dishes={this.state.dishes}
           onClick={(dishId) => this.onDishSelect(dishId)}
-        />
+        /> */}
         <DishDetail
           dish={
             this.state.dishes.filter(
