@@ -28,6 +28,9 @@ function Home(props) {
     <div className="container">
       <div className="row align-items-start">
         <div className="col-12 col-md m-1">
+          {/* {props.dishes.map((dish) => (
+            <RenderCard key={dish.id} item={dish} />
+          ))} */}
           <RenderCard item={props.dish} />
         </div>
         <div className="col-12 col-md m-1">
