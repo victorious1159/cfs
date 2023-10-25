@@ -1,4 +1,5 @@
 import React from "react";
+import { Loading } from './LoadingComponent';
 import {
   Card,
   CardImg,
@@ -9,7 +10,18 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
-function RenderMenuItem({ dish, onClick }) {
+function RenderMenuItem({ dish, isLoading, errMess}) {
+  if (isLoading) {
+    return (
+      <Loading />
+    );
+  }
+  else if (errMess) {
+    return (
+      <h4>{errMess}</h4>
+    );
+  }
+  else
   return (
     <Card>
       <Link to={`/menu/${dish.id}`}>
@@ -22,11 +34,12 @@ function RenderMenuItem({ dish, onClick }) {
   );
 }
 
+
 const Menu = (props) => {
   const menu = props.dishes.map((dish) => {
     return (
       <div className="col-12 col-md-3" key={dish.id}>
-        <RenderMenuItem dish={dish} onClick={props.onClick} />
+        <RenderMenuItem dish={dish} isLoading={props.dishesLoading} errMess={props.dishesErrMess} />
       </div>
     );
   });

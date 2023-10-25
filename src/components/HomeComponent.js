@@ -1,4 +1,5 @@
 import React from "react";
+import { Loading } from './LoadingComponent';
 import {
   Card,
   CardImg,
@@ -8,20 +9,33 @@ import {
   CardSubtitle,
 } from "reactstrap";
 
-function RenderCard({ item }) {
-  return (
-    <Card>
-      <CardImg src={item.image} alt={item.name} />
-      <CardBody>
-        <CardTitle>{item.name}</CardTitle>
-        {item.designation ? (
-          <CardSubtitle>{item.designation}</CardSubtitle>
-        ) : null}
-        <CardText>{item.description}</CardText>
-      </CardBody>
-    </Card>
-  );
+function RenderCard({ item, isLoading, errMess }) {
+
+  if (isLoading) {
+    return (
+      <Loading />
+    );
+  }
+  else if (errMess) {
+    return (
+      <h4>{errMess}</h4>
+    );
+  }
+  else
+    return (
+      <Card>
+        <CardImg src={item.image} alt={item.name} />
+        <CardBody>
+          <CardTitle>{item.name}</CardTitle>
+          {item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null}
+          <CardText>{item.description}</CardText>
+        </CardBody>
+      </Card>
+    );
+
 }
+
+
 
 function Home(props) {
   return (
@@ -31,7 +45,7 @@ function Home(props) {
           {/* {props.dishes.map((dish) => (
             <RenderCard key={dish.id} item={dish} />
           ))} */}
-          <RenderCard item={props.dish} />
+          <RenderCard item={props.dish} isLoading={props.dishesLoading} errMess={props.dishesErrMess}  />
         </div>
         <div className="col-12 col-md m-1">
           <RenderCard item={props.promotion} />
